@@ -29,15 +29,10 @@
 <script setup lang="ts">
   import * as yup from "yup";
 
-  const { errors, values, form, handleSubmit } =
-    useFormValidation({
-      email: yup.string().email().required(),
-      password: yup.string().min(6).required(),
-    });
-
-  function changeEmail(email: string) {
-    form.value.email = email;
-  }
+  const { errors, values, form, handleSubmit } = useFormValidation({
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
+  });
 
   const onSubmit = handleSubmit(submitForm);
 

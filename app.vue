@@ -6,6 +6,7 @@
       <form @submit="onSubmit">
         <div class="flex flex-col gap-4">
           <FormInput
+            label="Email"
             v-model="form.email"
             v-bind="form.emailProps"
             type="text"
@@ -14,6 +15,7 @@
 
           <FormInput
             type="password"
+            label="Password"
             v-model="form.password"
             v-bind="form.passwordProps"
             :error="errors.password"

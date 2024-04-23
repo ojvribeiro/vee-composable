@@ -1,0 +1,14 @@
+{
+  "tailwindCSS.classAttributes": ["class", ".*-class(es)?", "theme"],
+  "tailwindCSS.experimental.classRegex": [
+    ["Theme \\=([^;]*);?", "'([^']*)'"],
+    ["Class \\=([^;]*);?", "'([^']*)'"],
+    ["Classes \\=([^;]*);?", "'([^']*)'"],
+    ["Class \\=([^;]*);?", "\"([^\"]*)\""],
+    ["Classes \\=([^;]*);?", "\"([^\"]*)\""],
+    ["Class \\=([^;]*);?", "\\`([^\\`]*)\\`"],
+    ["Classes \\=([^;]*);?", "\\`([^\\`]*)\\`"]
+  ],
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.formatOnSave": true
+}

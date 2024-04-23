@@ -30,8 +30,8 @@
   import * as yup from "yup";
 
   const { errors, values, form, handleSubmit } = useFormValidation({
-    email: ["string", "email", "required"],
-    password: ["string", { min: 6 }, "required"],
+    email: yup.string().email().required(),
+    password: yup.string().min(6).required(),
   });
 
   function changeEmail(email: string) {

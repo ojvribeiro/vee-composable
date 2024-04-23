@@ -22,20 +22,11 @@
         ref="inputRef"
         :id="props.label ? transformedId : undefined"
         :class="resolvedInputClasses"
-        :readonly="props.readonly ?? false"
         :value="$attrs.value || modelValue || ''"
         @input="
           $emit('update:modelValue', ($event.target as HTMLInputElement).value)
         "
       />
-
-      <div
-        v-if="props.readonly"
-        class="grid cursor-help place-items-center self-stretch px-3 py-0"
-        title="This field is read-only"
-      >
-        <Icon name="status/lock-alt" class="text-2xl opacity-30" />
-      </div>
 
       <div
         v-if="$slots.suffix"
@@ -45,7 +36,7 @@
       </div>
     </div>
 
-    <div class="text-red-400 text-xs" v-if="props.error">
+    <div class="text-xs text-red-400" v-if="props.error">
       {{ props.error }}
     </div>
   </div>
@@ -60,7 +51,6 @@
     label?: string
     labelClass?: string | string[]
     inputClass?: string | string[]
-    readonly?: boolean
     class?: string | string[]
     modelValue?: string | number | null
     error?: string
@@ -105,12 +95,11 @@
       rounded-lg overflow-hidden
       border ring-offset-1
       bg-white
-      font-roboto text-secondary-silver1 !p-0
+      font-roboto text-gray-700 !p-0
     `
 
     return twMerge(
       defaultClasses,
-      !props.readonly && 'transition focus-within:ring-2',
       props.error && 'border-red-400',
       props.class as string
     )
@@ -129,10 +118,6 @@
       h-full w-full border border-transparent bg-transparent p-4 outline-none
     `
 
-    return twMerge(
-      defaultClasses,
-      props.inputClass as string,
-      props.readonly ? 'cursor-not-allowed' : 'cursor-text'
-    )
+    return twMerge(defaultClasses, props.inputClass as string)
   })
 </script>

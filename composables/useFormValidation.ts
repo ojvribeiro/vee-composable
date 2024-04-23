@@ -1,11 +1,10 @@
-import { useForm, useResetForm, useIsFormTouched } from "vee-validate";
+import { useForm } from "vee-validate";
 import { toTypedSchema } from "@vee-validate/yup";
 import * as yup from "yup";
 
 export function useFormValidation(options: Record<string, any> = {}) {
-  const form = ref<Record<string, any>>({});  
-  
-  // Creates a typed schema for vee-validate
+  const form = ref<Record<string, any>>({});
+
   const schema = computed(() =>
     toTypedSchema(
       yup.object({
@@ -13,25 +12,19 @@ export function useFormValidation(options: Record<string, any> = {}) {
       })
     )
   );
-  
-  const { values, errors, handleSubmit, setFieldValue, handleReset } = useForm({
+
+  const vee = useForm({
     validationSchema: schema,
   });
-  
-  
+
   watchEffect(() => {
     Object.keys(form.value).forEach((key: string) => {
-      setFieldValue(key, form.value[key]);
+      vee.setFieldValue(key, form.value[key]);
     });
   });
-  
-  // Resets the form
-  handleReset();
 
   return {
     form,
-    values,
-    errors,
-    handleSubmit,
+    ...vee,
   };
 }

@@ -33,16 +33,16 @@
 </template>
 
 <script setup lang="ts">
-  import * as yup from "yup";
+  import * as yup from 'yup'
 
   const { errors, values, form, handleSubmit } = useFormValidation({
     email: yup.string().email().required(),
     password: yup.string().min(6).required(),
   });
 
-  const onSubmit = handleSubmit(submitForm);
+  const onSubmit = handleSubmit(submitForm)
 
   function submitForm() {
-    console.log("submit");
+    console.log('submit')
   }
 </script>

@@ -16,7 +16,7 @@
       
     </div>
 
-    <div class="text-xs text-functional-danger1" v-if="props.error">
+    <div class="text-xs text-red-600" v-if="props.error">
       {{ props.error }}
     </div>
   </div>
